@@ -43,20 +43,6 @@ public class LoginSteps {
 
         }
     }
-    @When("User enter invalid username and password in login form")
-    public void userEnterInvalidUsernameAndPasswordInLoginForm() throws IOException {
-        String filePath = "TestData/Credentials.xlsx";
-        String sheetName = "Sheet1";
-        List<String[]> excelData = ExcelDataReader.readDataFromExcel(filePath, sheetName);
-
-        for (String[] row : excelData) {
-            String username1 = row[0];
-            String password = row[2];
-
-            pom.sendKeysToElement(loginPage.emailTextField, username1);
-            pom.sendKeysToElement(loginPage.passwordTextField, password);
-        }
-    }
     @And("Clicks on Log in button")
     public void clicksOnLogInButton() {
         pom.clickElement(loginPage.loginButton);

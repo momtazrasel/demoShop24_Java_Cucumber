@@ -11,6 +11,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 public class PageObjectManager {
     private WebDriver driver;
@@ -289,4 +290,51 @@ public class PageObjectManager {
         }
     }
 
+    String randomFirstName = generateRandomFirstName();
+    public static String generateRandomFirstName() {
+        String[] firstNames = {"John", "Jane", "Michael", "Emily", "David", "Emma", "Daniel", "Olivia", "William", "Sophia"};
+
+        // Generate a random index to pick a random first name
+        Random random = new Random();
+        int index = random.nextInt(firstNames.length);
+
+        // Return the random first name
+        return firstNames[index];
+    }
+
+    //Random Gmail Send
+    public static String generateRandomGmail() {
+        // Generate a random string for the username part of the email
+        String username = getRandomString(8); // You can adjust the length as needed
+
+        // Concatenate with the Gmail domain
+        return username + "@gmail.com";
+    }
+
+    private static String getRandomString(int length) {
+        String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder randomString = new StringBuilder();
+
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            randomString.append(characters.charAt(index));
+        }
+
+        return randomString.toString();
+    }
+
+    //Random Phone Number
+    String randomPhoneNumber = generateRandomPhoneNumber();
+    public static String generateRandomPhoneNumber() {
+        StringBuilder phoneNumber = new StringBuilder("0"); // Assuming it's a local number
+
+        Random random = new Random();
+        for (int i = 0; i < 7; i++) {
+            int digit = random.nextInt(10); // Generates a random digit between 0 and 9
+            phoneNumber.append(digit);
+        }
+
+        return phoneNumber.toString();
+    }
 }
